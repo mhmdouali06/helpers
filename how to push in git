@@ -1,0 +1,17 @@
+Sure, here are the step-by-step instructions for pushing your project to GitHub:
+
+Create a GitHub account: If you don't already have a GitHub account, go to the GitHub website and create one.
+
+Create a new repository: Click on the "+" sign on the top right corner of the GitHub homepage and select "New repository". Give your repository a name and a brief description, and choose whether it should be public or private.
+
+Initialize a Git repository: Open a command prompt or terminal window on your computer and navigate to the directory where your project is stored. Type the command "git init" to initialize a new Git repository.
+
+Add your files: Use the command "git add ." to add all the files in your project to the repository. Alternatively, you can use "git add filename" to add individual files.
+
+Commit your changes: Use the command "git commit -m 'commit message'" to commit your changes to the repository. Be sure to provide a descriptive commit message that explains what changes you made.
+
+Link your local repository to the remote GitHub repository: Use the command "git remote add origin https://github.com/username/repo-name.git" to link your local repository to the remote GitHub repository. Replace "username" with your GitHub username and "repo-name" with the name of your repository.
+
+Push your changes to GitHub: Use the command "git push -u origin master" to push your changes to the GitHub repository. This command will create a new branch called "master" in the remote repository and push your changes to that branch.
+
+And that's it! Your project is now on GitHub. You can view it on the GitHub website, and other users can clone it or make their own contributions.
