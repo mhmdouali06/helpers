@@ -1,0 +1,50 @@
+import React, {useEffect, useRef} from 'react'
+
+interface MapProps {
+  origin: google.maps.LatLngLiteral
+  destination: google.maps.LatLngLiteral
+}
+
+const DirectMaps: React.FC<MapProps> = ({origin, destination}) => {
+  const mapRef = useRef<HTMLDivElement | null | any>(null)
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = `https://maps.googleapis.com/maps/api/js?key=you_code_api`
+    script.async = true
+    script.defer = true
+    document.head.appendChild(script)
+
+    script.addEventListener('load', () => {
+      const directionsService = new google.maps.DirectionsService()
+      const directionsRenderer = new google.maps.DirectionsRenderer()
+
+      const map = new google.maps.Map(mapRef.current, {
+        center: origin,
+        zoom: 10,
+      })
+
+      directionsRenderer.setMap(map)
+
+      const request: google.maps.DirectionsRequest = {
+        origin,
+        destination,
+        travelMode: google.maps.TravelMode.DRIVING,
+      }
+
+      directionsService.route(request, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          directionsRenderer.setDirections(result)
+        }
+      })
+    })
+
+    return () => {
+      script.removeEventListener('load', () => {})
+    }
+  }, [origin, destination])
+
+  return <div ref={mapRef} style={{width: '100%', height: '400px'}} />
+}
+
+export default DirectMaps
