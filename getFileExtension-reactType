@@ -1,0 +1,8 @@
+ const getFileExtension = (filePath: string): string | null => {
+    const parts = filePath.split('.')
+    if (parts.length < 2) {
+      return null
+    }
+    const extension = parts[parts.length - 1]
+    return extension
+  }
