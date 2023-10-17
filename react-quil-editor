@@ -1,0 +1,47 @@
+import React from 'react'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
+type Props = {
+  formik?: any
+  name?: any
+  modules?: any
+}
+
+const QuilleModule: React.FC<Props> = ({formik, name, modules}) => {
+  console.log(formik)
+  const handleQuillChange = (value) => {
+    // Update Formik field value
+    formik.setFieldValue(name, value)
+  }
+  return (
+    <div>
+      <ReactQuill
+        className='react-quill-editor'
+        theme='snow'
+        value={formik.values[name]} // Set the value to the Formik field's value
+        onChange={handleQuillChange}
+        modules={modules}
+      />
+    </div>
+  )
+}
+
+export default QuilleModule
+export const QuillModules = {
+    toolbar: [
+      [{header: [1, 2, 3, 4, 5, 6, false]}],
+      [{font: []}],
+      [{size: []}],
+      [{color: []}, {background: []}],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [
+        // { List: "unordered " },
+        // { List: "ordered" },
+        {list: 'bullet'},
+        {indent: '-1'},
+        {indent: '+1'},
+      ],
+      ['link', 'image', 'video'],
+    ],
+  }
